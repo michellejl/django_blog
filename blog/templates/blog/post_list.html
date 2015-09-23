@@ -1,18 +1,107 @@
+{% load staticfiles %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Michelle JL Blog</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/5.5.1/css/foundation.min.css">
+        <link rel="stylesheet" href="{% static "css/blog.css" %}">
     </head>
     <body>
-      <div>
-        <h1><a href="/">Django Girls Blog</a></h1>
+
+        <header id="mainHeader" class="clearfix">
+          <div class="small-4 columns">
+            <h1><a href="http://michellejl.com"><img src="{% static "imgs/logo.png" %}" class="logo" /></a></h1>
+          </div>
+          <div class="small-8 columns">
+            <!-- Link groups -->
+            <!-- Social Links -->
+            <div class="row">
+              <nav class="small-12 column social">
+                <ul>
+                  <li>
+                    <a href="https://www.linkedin.com/in/michellejl" target="_blank">
+                      <img src="{% static "imgs/linkedin.png" %}" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/michellejl" target="_blank">
+                      <img src="{% static "imgs/github.png" %}" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://instagram.com/michellejl_photos" target="_blank">
+                      <img src="{% static "imgs/instagram.png" %}" />
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- End of Social Links -->
+            <!-- Main Page Navigation -->
+            <!-- <div class="row">
+              <nav class="small-12 column mainNav">
+                <ul>
+                  <li><a href="/">About</a></li>
+                  <li><a href="/">Code Portfolio</a></li>
+                  <li><a href="/">Deisgn Portfolio</a></li>
+                  <li><a href="/">Connect</a></li>
+                  <li><a href="/" class="active">Blog</a></li>
+                </ul>
+              </nav> -->
+            </div><!-- Enf of Main Page Navigation Links -->
+          </div><!-- End of Link groups -->
+        </header>
+
+        <div class="row" id="container">
+
+        <hgroup class="page_title">
+          <h1>Michelle JL's Blog:</h1>
+          <h2>Random Musings of a Web Developer</h2>
+        </hgroup>
+
+
+        {% for post in posts %}
+        <article class="row post">
+          <header class="column small-12">
+            <h3><a href="">{{ post.title }}</a></h3>
+            <hr />
+            <p>Author: <a href="#">{{ post.author }}</a> <br />
+              Published: {{ post.published_date }}</p>
+            <hr />
+          </header>
+          <section class="column small-12">
+            <p>{{ post.text|linebreaks }}</p>
+          </section>
+        </article>
+        {% endfor %}
       </div>
 
-      {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaks }}</p>
-        </div>
-      {% endfor %}
+      <footer>
+        <p>
+          &copy; Copyright Michelle JL 2015<br />
+          <a href="http://michellejl.com">MichelleJL.com</a><br />
+          <a href="mailto:michellejl@live.com">MichelleJL@live.com</a>
+        </p>
+        <nav class="social">
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/michellejl" target="_blank">
+                <img src="{% static "imgs/linkedin.png" %}" />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/michellejl" target="_blank">
+                <img src="{% static "imgs/github.png" %}" />
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/michellejl_photos" target="_blank">
+                <img src="{% static "imgs/instagram.png" %}" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+
+      <script src="https://cdn.jsdelivr.net/foundation/5.5.1/js/foundation.min.js"></script>
     </body>
 </html>
